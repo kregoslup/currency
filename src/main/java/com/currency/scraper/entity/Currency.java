@@ -18,6 +18,10 @@ public class Currency {
 
     private String name;
 
+    public Currency(Code code) {
+        this.code = code;
+    }
+
     public Currency(Code code, String name) {
         this.code = code;
         this.name = name;
