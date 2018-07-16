@@ -1,0 +1,35 @@
+spring:
+  jpa:
+    generate-ddl: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/currency
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+server:
+  port: 8080
+
+scraper:
+  base_address: "https://www.ecb.europa.eu/"
+  rss_address: "home/html/rss.en.html"
+  scheduler: "50000"
+
+rest:
+  template:
+    connect:
+      timeout: 20000
+    read:
+      timeout: 20000
+
+retry:
+  max:
+    tries: 30
+  sleep:
+    interval: 30
+
+circuit:
+  breaker:
+    failure:
+      threshold: 2
+    delay: 30
