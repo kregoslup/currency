@@ -1,0 +1,21 @@
+<ul class="zebraList">
+<li><a class="rss" href="/rss/press.html">Press releases, speeches, interviews, press conference transcripts</a> </li>
+<li><a class="rss"
+    href="/rss/statpress.html">Statistical press releases </a> </li>
+<li><a class="rss" href="/rss/pub.html">Publications, in pdf format </a> </li>
+<li><a class="rss"
+    href="/rss/wppub.html">Working Papers, in pdf format </a> </li>
+<li><a class="rss"
+    href="/rss/legalacts.html">Legal acts, Opinions, Decisions </a> </li>
+<li><a
+    class="rss" href="/rss/operations.html">Recent open market operations and ad hoc ECB communication </a> </li>
+<li><a
+    class="rss" href="/rss/procurements.html">Open procurements, award notices and lists of suppliers </a> </li>
+<li><a class="rss" href="/rss/yc.html">Euro area yield curve </a> </li>
+<li> <a class="rss" href="/rss/rbu.html">Research bulletin </a> </li>
+</ul>
+<h2>Euro foreign exchange reference rates RSS links</h2>
+<ul class="zebraList">
+<li><a class="rss" href="/rss/fxref-usd.html">US dollar (USD)</a></li>
+<li><a class="rss" href="/rss/fxref-jpy.html">Japanese yen (JPY)</a></li>
+</ul>
