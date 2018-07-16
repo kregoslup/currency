@@ -1,7 +1,9 @@
 package com.currency.scraper.scraping;
 
 import com.currency.scraper.entity.ExchangeRate;
+import com.currency.scraper.exception.ScraperException;
 import com.currency.scraper.vo.ExchangeLink;
+import com.currency.scraper.vo.ParsedExchangeRate;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,8 +30,8 @@ public class ScraperParserTest {
         assertThat(links, CoreMatchers.hasItem(ExchangeLink.of("test")));
     }
 
-    @Test
-    public void testParserParsesInvalidPayloadToEmptyList() {
+    @Test(expected = ScraperException.class)
+    public void testParserParsesInvalidPayloadThrowsException() {
         Parser parser = new Parser();
         List<ExchangeLink> links = parser.parseExchangeLinks(invalidPayload);
         assertEquals(links.size(), 0);
@@ -38,7 +40,7 @@ public class ScraperParserTest {
     @Test
     public void testParserParsesExchangeRates() {
         Parser parser = new Parser();
-        List<ExchangeRate> rates = parser.parseExchangeRates(validPayload);
+        List<ParsedExchangeRate> rates = parser.parseExchangeRates(validPayload);
         assertEquals(rates.size(), 2);
     }
 }
