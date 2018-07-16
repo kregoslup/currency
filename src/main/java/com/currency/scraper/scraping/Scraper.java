@@ -3,6 +3,7 @@ package com.currency.scraper.scraping;
 import com.currency.scraper.configuration.ScraperProperties;
 import com.currency.scraper.entity.ExchangeRate;
 import com.currency.scraper.vo.ExchangeLink;
+import com.currency.scraper.vo.ParsedExchangeRate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -30,6 +31,7 @@ public class Scraper {
     }
 
     private URI createAddress(URI endpoint) {
+        log.debug("Creating address {}", endpoint);
         return UriComponentsBuilder.fromUri(scraperProperties.getBaseAddress())
                 .pathSegment(endpoint.toString())
                 .build()
@@ -46,14 +48,15 @@ public class Scraper {
         return parser.parseExchangeLinks(client.fetchResource(address));
     }
 
-    private List<ExchangeRate> fetchExchangeRates(List<ExchangeLink> links) {
+    private List<ParsedExchangeRate> fetchExchangeRates(List<ExchangeLink> links) {
+        log.debug("Fetching rates {}", links.size());
         return links.stream()
                 .map(link -> parser.parseExchangeRates(client.fetchResource(createAddress(link.getLink()))))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
     }
 
-    public List<ExchangeRate> scrape() {
+    public List<ParsedExchangeRate> scrape() {
         List<ExchangeLink> links = fetchExchangeLinks();
         return fetchExchangeRates(links);
     }
